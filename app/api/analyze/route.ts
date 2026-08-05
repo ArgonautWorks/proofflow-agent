@@ -25,7 +25,10 @@ export async function POST(request: NextRequest) {
     });
     return NextResponse.json({ audit }, { status: 201 });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Audit failed";
+    const rawMessage = error && typeof error === "object" && "message" in error
+      ? (error as { message: unknown }).message
+      : "Audit failed";
+    const message = typeof rawMessage === "string" ? rawMessage : JSON.stringify(rawMessage);
     const status = /limit|capacity/i.test(message) ? 429 : /URL|HTTPS|GitHub|Devpost|Repository|rules page/i.test(message) ? 400 : 500;
     return NextResponse.json({ error: message }, { status });
   }

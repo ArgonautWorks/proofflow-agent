@@ -27,7 +27,7 @@ The Next.js server runs the bounded orchestration layer. Firebase Admin access i
 
 ## Sponsor technology
 
-- **Gemini 3.6 Flash** through the official **Google GenAI SDK** (`@google/genai`)
+- **Gemini 3.6 Flash** through the official **Google GenAI SDK** (`@google/genai`), with Gemini 3.5 Flash as a standards-compliant availability fallback
 - **Cloud Firestore** in the `proofflow-agent` Firebase project
 - Next.js 16 and React 19 on Vercel
 - Zod schema validation and Vitest

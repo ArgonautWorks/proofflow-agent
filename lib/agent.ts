@@ -1,11 +1,11 @@
 import { collectSources } from "@/lib/sources";
-import { GEMINI_MODEL, reasonAboutEvidence } from "@/lib/gemini";
+import { reasonAboutEvidence } from "@/lib/gemini";
 import { persistAudit } from "@/lib/firestore";
 import type { AgentAction, AuditInput } from "@/lib/types";
 
 export async function runProofFlow(input: AuditInput) {
   const sourceSnapshot = await collectSources(input);
-  const modelAudit = await reasonAboutEvidence(sourceSnapshot);
+  const { audit: modelAudit, model } = await reasonAboutEvidence(sourceSnapshot);
   const missing = modelAudit.requirements.filter((item) => item.status === "missing").length;
   const partial = modelAudit.requirements.filter((item) => item.status === "partial").length;
   const actionsPerformed: AgentAction[] = [
@@ -38,7 +38,7 @@ export async function runProofFlow(input: AuditInput) {
     score: Math.max(0, Math.min(100, modelAudit.score)),
     actionsPerformed,
     sourceSnapshot,
-    model: GEMINI_MODEL,
+    model,
     completedAt: new Date().toISOString(),
   });
 }
