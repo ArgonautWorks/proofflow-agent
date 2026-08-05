@@ -6,6 +6,7 @@ Built from scratch for the **All Things Agentic Hackathon** in the **Taskmaster*
 
 ## Live proof
 
+- Submitted entry: [ProofFlow on Devpost](https://devpost.com/software/proofflow-agent)
 - Product: [proofflow-agent.vercel.app](https://proofflow-agent.vercel.app)
 - Public demo video (1:48): [youtu.be/kqhoyUaeGdI](https://youtu.be/kqhoyUaeGdI)
 - Firestore-backed health: [proofflow-agent.vercel.app/api/health](https://proofflow-agent.vercel.app/api/health)
