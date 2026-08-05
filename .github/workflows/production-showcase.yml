@@ -39,7 +39,9 @@ jobs:
           const risks = new Set(audit.topRisks ?? []);
           const checks = {
             persistedAuditId: typeof audit.id === "string" && audit.id.length > 0,
-            gemmaPriority: audit.operationalPriority?.model === "gemma-4-26b-a4b-it",
+            validatedReasoningModel: ["gemini-3.6-flash", "gemini-3.5-flash-lite"].includes(audit.model),
+            validPriorityHandoff: audit.operationalPriority?.model === "gemma-4-26b-a4b-it"
+              || (audit.operationalPriority?.selection === "deterministic" && audit.operationalPriority?.model === null),
             embeddingGrounding: audit.semanticAlignment?.model === "gemini-embedding-2",
             groundedInValidatedRisk: risks.has(audit.semanticAlignment?.matchedRisk),
             completeTrace: audit.actionsPerformed?.length === 6,
