@@ -13,6 +13,8 @@ Built from scratch for the **All Things Agentic Hackathon** in the **Taskmaster*
 - Latest live audit: [JSON](https://proofflow-agent.vercel.app/api/runs/TiuPE6fJv3JuAamQvAIp) · [Markdown evidence pack](https://proofflow-agent.vercel.app/api/runs/TiuPE6fJv3JuAamQvAIp/report)
 - Cloud deployment evidence: [docs/CLOUD_PROOF.md](docs/CLOUD_PROOF.md)
 - Build-window provenance: [docs/BUILD_PROVENANCE.md](docs/BUILD_PROVENANCE.md)
+- Gemini XPRIZE business narrative: [docs/XPRIZE_SUBMISSION.md](docs/XPRIZE_SUBMISSION.md)
+- Truthful profit and loss statement: [docs/xprize-profit-and-loss.csv](docs/xprize-profit-and-loss.csv)
 
 The public demo was created for the purposes of entering the All Things Agentic Hackathon and includes on-screen narration, a production audit, the evidence ledger, system architecture, and live Google Cloud/Firestore proof.
 
@@ -111,6 +113,8 @@ Free agent discovery is also available at `/.well-known/agent-card.json` and `PO
 - [A2A Registry verified agent](https://a2aregistry.org/api/agents/5e987ee5-1f3d-430e-a3c6-5abc940d1ea0)
 
 Directory records and unpaid challenge probes are distribution evidence, not revenue.
+
+As of the XPRIZE submission package on August 5, 2026, ProofFlow has recorded no external users, paying users, revenue, or expenses. Internal tests, operator runs, directory probes, and judging activity are excluded from those figures. The public P&L above is the canonical disclosure until independently settled revenue is observed.
 
 ## Guardrails
 
