@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">ProofFlow Agent architecture</title>
+  <desc id="desc">Devpost, GitHub, and a live deployment feed a bounded source collector. Gemini reasons over structured evidence, Zod validates it, and Firestore stores the evidence ledger for the web interface and downloadable report.</desc>
+  <rect width="1200" height="520" fill="#f2f0e8"/>
+  <text x="64" y="62" fill="#151817" font-family="Arial, sans-serif" font-size="26" font-weight="700">PROOF/FLOW — AUDITABLE AGENT PIPELINE</text>
+  <text x="64" y="88" fill="#686a63" font-family="monospace" font-size="12" letter-spacing="2">PUBLIC INPUTS → REASONING → VALIDATION → DURABLE ACTION</text>
+
+  <g font-family="Arial, sans-serif">
+    <rect x="64" y="142" width="212" height="86" fill="#fbfaf5" stroke="#151817"/>
+    <rect x="64" y="142" width="7" height="86" fill="#ff6a3d"/>
+    <text x="88" y="177" fill="#686a63" font-family="monospace" font-size="11">01 / BINDING SOURCE</text>
+    <text x="88" y="204" fill="#151817" font-size="17" font-weight="700">DEVPOST RULES</text>
+
+    <rect x="64" y="246" width="212" height="86" fill="#fbfaf5" stroke="#151817"/>
+    <rect x="64" y="246" width="7" height="86" fill="#151817"/>
+    <text x="88" y="281" fill="#686a63" font-family="monospace" font-size="11">02 / BUILD EVIDENCE</text>
+    <text x="88" y="308" fill="#151817" font-size="17" font-weight="700">GITHUB API</text>
+
+    <rect x="64" y="350" width="212" height="86" fill="#fbfaf5" stroke="#151817"/>
+    <rect x="64" y="350" width="7" height="86" fill="#137c56"/>
+    <text x="88" y="385" fill="#686a63" font-family="monospace" font-size="11">03 / LIVE EVIDENCE</text>
+    <text x="88" y="412" fill="#151817" font-size="17" font-weight="700">DEPLOYMENT PROBE</text>
+
+    <path d="M276 185H340M276 289H340M276 393H340M340 185V393" fill="none" stroke="#151817" stroke-width="2"/>
+    <path d="m332 281 12 8-12 8" fill="none" stroke="#151817" stroke-width="2"/>
+
+    <rect x="372" y="213" width="220" height="152" fill="#151817" stroke="#151817"/>
+    <rect x="372" y="213" width="220" height="7" fill="#c8f135"/>
+    <text x="396" y="253" fill="#aeb2ac" font-family="monospace" font-size="11">04 / ORCHESTRATE</text>
+    <text x="396" y="284" fill="#ffffff" font-size="18" font-weight="700">BOUNDED COLLECTOR</text>
+    <text x="396" y="312" fill="#aeb2ac" font-size="12">Allowlist · timeouts · SHA-256</text>
+    <text x="396" y="334" fill="#aeb2ac" font-size="12">No repo writes · no private URLs</text>
+
+    <path d="M592 289H646" fill="none" stroke="#315cff" stroke-width="3"/>
+    <path d="m637 281 12 8-12 8" fill="none" stroke="#315cff" stroke-width="3"/>
+
+    <rect x="676" y="160" width="222" height="112" fill="#315cff" stroke="#151817"/>
+    <text x="700" y="198" fill="#dbe3ff" font-family="monospace" font-size="11">05 / REASON</text>
+    <text x="700" y="229" fill="#ffffff" font-size="19" font-weight="700">GEMINI 3.6 FLASH</text>
+    <text x="700" y="251" fill="#dbe3ff" font-size="12">Google GenAI SDK</text>
+
+    <rect x="676" y="306" width="222" height="112" fill="#fbfaf5" stroke="#151817"/>
+    <rect x="676" y="306" width="222" height="7" fill="#ff6a3d"/>
+    <text x="700" y="344" fill="#686a63" font-family="monospace" font-size="11">06 / VERIFY</text>
+    <text x="700" y="375" fill="#151817" font-size="19" font-weight="700">JSON SCHEMA + ZOD</text>
+    <text x="700" y="397" fill="#686a63" font-size="12">Fail closed on malformed output</text>
+
+    <path d="M787 272V306" fill="none" stroke="#151817" stroke-width="2"/>
+    <path d="m779 297 8 12 8-12" fill="none" stroke="#151817" stroke-width="2"/>
+
+    <path d="M898 362H952" fill="none" stroke="#137c56" stroke-width="3"/>
+    <path d="m943 354 12 8-12 8" fill="none" stroke="#137c56" stroke-width="3"/>
+
+    <rect x="980" y="213" width="156" height="152" fill="#fbfaf5" stroke="#151817"/>
+    <rect x="980" y="213" width="156" height="7" fill="#137c56"/>
+    <text x="1002" y="253" fill="#686a63" font-family="monospace" font-size="11">07 / LOCK</text>
+    <text x="1002" y="284" fill="#151817" font-size="18" font-weight="700">FIRESTORE</text>
+    <text x="1002" y="312" fill="#686a63" font-size="12">Evidence ledger</text>
+    <text x="1002" y="334" fill="#686a63" font-size="12">UI + Markdown pack</text>
+
+    <text x="64" y="482" fill="#686a63" font-family="monospace" font-size="11">SERVER-ONLY CREDENTIALS  ·  PRIVATE-BY-DEFAULT DATABASE  ·  3 RUNS / CLIENT / DAY</text>
+  </g>
+</svg>
