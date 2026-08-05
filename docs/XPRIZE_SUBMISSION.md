@@ -30,7 +30,7 @@ An agent-run workflow performs source validation, rules ingestion, repository in
 
 ## Live production proof
 
-ProofFlow is deployed at <https://proofflow-agent.vercel.app>. A public health request performs a server-authenticated Firestore write before reporting that Firestore is connected. Production audit `TiuPE6fJv3JuAamQvAIp` can be read as [JSON](https://proofflow-agent.vercel.app/api/runs/TiuPE6fJv3JuAamQvAIp) and as a generated [Markdown evidence pack](https://proofflow-agent.vercel.app/api/runs/TiuPE6fJv3JuAamQvAIp/report). The attached production-evidence PDF shows the no-cost Google Cloud configuration and a persisted audit document. The current public repository contains 25 passing tests plus lint and production-build checks.
+ProofFlow is deployed at <https://proofflow-agent.vercel.app>. A public health request performs a server-authenticated Firestore write before reporting that Firestore is connected. Production audit `IxlFsvwqGZJ8ZHhQJ9dy` can be read as [JSON](https://proofflow-agent.vercel.app/api/runs/IxlFsvwqGZJ8ZHhQJ9dy) and as a generated [Markdown evidence pack](https://proofflow-agent.vercel.app/api/runs/IxlFsvwqGZJ8ZHhQJ9dy/report). That persisted run scored 96/100 and records a successful `gemma-4-26b-a4b-it` function-bound priority selection. The attached production-evidence PDF shows the no-cost Google Cloud configuration and an earlier persisted audit document. The current public repository contains 25 passing tests plus lint and production-build checks.
 
 ## Google Cloud and Gemini integration
 
