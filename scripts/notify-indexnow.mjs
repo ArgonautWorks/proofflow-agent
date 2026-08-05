@@ -7,6 +7,7 @@ export const INDEXNOW_KEY = "007788c945504c664c19514d5baf7187";
 export const SITE_ORIGIN = "https://proofflow-agent.vercel.app";
 export const INDEXABLE_URLS = [
   `${SITE_ORIGIN}/`,
+  `${SITE_ORIGIN}/building-proofflow`,
   `${SITE_ORIGIN}/llms.txt`,
   `${SITE_ORIGIN}/openapi.json`,
 ];

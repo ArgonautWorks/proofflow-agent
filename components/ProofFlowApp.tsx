@@ -77,6 +77,7 @@ export function ProofFlowApp() {
         <div className="nav-links">
           <a href="#workflow">Workflow</a>
           <a href="#architecture">Architecture</a>
+          <a href="/building-proofflow">Build story</a>
           <a href="/openapi.json">Agent API</a>
           <a href="https://github.com/ArgonautWorks/proofflow-agent" target="_blank" rel="noreferrer">Source</a>
         </div>

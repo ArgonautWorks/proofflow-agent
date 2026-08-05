@@ -16,7 +16,7 @@ describe("IndexNow notification", () => {
     await expect(notifyIndexNow(fetchImplementation)).resolves.toEqual({
       accepted: true,
       status: 202,
-      urls: 3,
+      urls: 4,
     });
     expect(fetchImplementation).toHaveBeenNthCalledWith(
       2,
@@ -26,7 +26,7 @@ describe("IndexNow notification", () => {
         body: JSON.stringify(indexNowPayload()),
       }),
     );
-    expect(INDEXABLE_URLS).toHaveLength(3);
+    expect(INDEXABLE_URLS).toHaveLength(4);
   });
 
   it("does not notify when the deployed ownership key is absent", async () => {
