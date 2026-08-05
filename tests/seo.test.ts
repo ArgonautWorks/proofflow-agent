@@ -15,7 +15,10 @@ describe("search discovery", () => {
       sitemap: `${SITE_ORIGIN}/sitemap.xml`,
       host: SITE_ORIGIN,
     });
-    expect(sitemap()).toEqual([{ url: SITE_ORIGIN }]);
+    expect(sitemap()).toEqual([
+      { url: SITE_ORIGIN },
+      { url: `${SITE_ORIGIN}/building-proofflow` },
+    ]);
   });
 
   it("describes the free product without inventing customers or revenue", () => {
