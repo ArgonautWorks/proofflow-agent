@@ -97,7 +97,7 @@ Other routes:
 
 ## Paid agent API
 
-The free UI remains available for evaluation. Autonomous buyers can request higher-priority machine-readable audits through `POST /api/v1/audits` for **$0.05 USDC on Base** using x402 v2. The paid handler validates the sources, checks capacity, and completes model inference before settlement; invalid inputs, capacity failures, and upstream model errors are not charged.
+The free UI remains available for evaluation. Autonomous buyers can request higher-priority machine-readable audits through `POST /api/v1/audits` for **$0.05 USDC on Base** using x402 v2. The paid handler validates the sources, checks capacity, and completes model inference before settlement; invalid inputs, capacity failures, and upstream model errors are not charged. `GET /api/v1/audits` returns free machine-readable purchase instructions; only `POST` is paid.
 
 Discovery is available at `/openapi.json`, `/.well-known/x402`, and `/llms.txt`. Payments settle directly to the ArgonautWorks receiving wallet without an account, subscription, or API key.
 

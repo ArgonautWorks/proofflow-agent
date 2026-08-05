@@ -22,6 +22,13 @@ export async function GET(request: NextRequest) {
     servers: [{ url: origin }],
     paths: {
       [PAID_AUDIT_PATH]: {
+        get: {
+          operationId: "describeProofFlowAuditPurchase",
+          summary: "Return free purchase instructions for the paid audit operation",
+          tags: ["Discovery"],
+          security: [],
+          responses: { 200: { description: "Paid operation, price, settlement, schema, and discovery links" } },
+        },
         post: {
           operationId: "createProofFlowAudit",
           summary: "Generate a persisted evidence audit for a public Devpost project",

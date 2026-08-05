@@ -6,6 +6,7 @@ import {
   PAY_TO,
   X402_NETWORK,
   paidAuditInputSchema,
+  paidAuditPurchaseDescription,
   paidAuditRouteConfig,
 } from "../lib/x402";
 
@@ -25,6 +26,18 @@ describe("paid audit API", () => {
     expect(paidAuditInputSchema.required).toEqual(["rulesUrl", "repoUrl"]);
     expect(paidAuditInputSchema.additionalProperties).toBe(false);
     expect(Object.keys(paidAuditInputSchema.properties)).toEqual(["rulesUrl", "repoUrl", "projectUrl"]);
+  });
+
+  it("provides free purchase discovery without representing an audit as fulfilled", () => {
+    const description = paidAuditPurchaseDescription("https://proofflow-agent.vercel.app/untrusted/path");
+    expect(description.paid_operation).toMatchObject({
+      method: "POST",
+      url: "https://proofflow-agent.vercel.app/api/v1/audits",
+      price: "$0.05",
+      settlement: { network: X402_NETWORK, pay_to: PAY_TO },
+    });
+    expect(description.charged).toBe(false);
+    expect(description).not.toHaveProperty("audit");
   });
 
   it("marks upstream failures retryable and uncharged", async () => {

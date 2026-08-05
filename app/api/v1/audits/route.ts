@@ -4,10 +4,16 @@ import { runProofFlow } from "@/lib/agent";
 import { enforcePaidCapacity } from "@/lib/firestore";
 import { auditErrorResponse } from "@/lib/http";
 import { auditInputSchema } from "@/lib/schema";
-import { x402HttpServer } from "@/lib/x402";
+import { paidAuditPurchaseDescription, x402HttpServer } from "@/lib/x402";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
+
+export function GET(request: NextRequest) {
+  return NextResponse.json(paidAuditPurchaseDescription(request.nextUrl.origin), {
+    headers: { "cache-control": "public, max-age=300" },
+  });
+}
 
 async function handler(request: NextRequest): Promise<NextResponse<unknown>> {
   try {

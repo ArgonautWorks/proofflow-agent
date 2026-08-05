@@ -39,6 +39,34 @@ export const paidAuditExample = {
   projectUrl: "https://proofflow-agent.vercel.app",
 };
 
+export function paidAuditPurchaseDescription(origin: string) {
+  const serviceOrigin = new URL(origin).origin;
+  return {
+    service: "ProofFlow Audit API",
+    description: "Generate a source-cited Devpost submission-compliance audit from public contest and project evidence.",
+    paid_operation: {
+      method: "POST",
+      url: `${serviceOrigin}${PAID_AUDIT_PATH}`,
+      price: PAID_AUDIT_PRICE,
+      settlement: {
+        protocol: "x402",
+        version: 2,
+        network: X402_NETWORK,
+        asset: "USDC",
+        asset_address: BASE_USDC,
+        pay_to: PAY_TO,
+      },
+      input_schema: paidAuditInputSchema,
+      example: paidAuditExample,
+    },
+    output: "Persisted JSON evidence ledger with score, requirements, risks, next actions, source fingerprints, and report routes.",
+    openapi: `${serviceOrigin}/openapi.json`,
+    x402_manifest: `${serviceOrigin}/.well-known/x402`,
+    a2a_agent_card: `${serviceOrigin}/.well-known/agent-card.json`,
+    charged: false,
+  };
+}
+
 const outputExample = {
   audit: {
     id: "TiuPE6fJv3JuAamQvAIp",
