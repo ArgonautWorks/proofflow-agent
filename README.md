@@ -104,6 +104,8 @@ The free UI remains available for evaluation. Autonomous buyers can request high
 
 Discovery is available at `/openapi.json`, `/.well-known/x402`, and `/llms.txt`. Payments settle directly to the ArgonautWorks receiving wallet without an account, subscription, or API key.
 
+The public origin also exposes `/robots.txt` and `/sitemap.xml`. Significant landing-page changes can be submitted to participating search engines with `npm run notify:indexnow`; the notifier first verifies the deployed ownership key and never treats an accepted indexing request as traffic or revenue.
+
 Free agent discovery is also available at `/.well-known/agent-card.json` and `POST /a2a`. The A2A transport returns purchase instructions only: it never invokes Gemini, creates an audit, or initiates payment.
 
 - [x402scan service page](https://www.x402scan.com/server/0cd77797-74c0-4dfa-a7f4-047ce5c35afb)
