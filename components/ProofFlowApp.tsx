@@ -6,7 +6,7 @@ import type { AuditCounts, AuditResult, RequirementStatus } from "@/lib/types";
 const DEFAULT_RULES = "https://allthingsagentichackathon.devpost.com/rules";
 const DEFAULT_REPO = "https://github.com/ArgonautWorks/proofflow-agent";
 const DEFAULT_PROJECT = "https://proofflow-agent.vercel.app";
-const SHOWCASE_RUN_ID = "IxlFsvwqGZJ8ZHhQJ9dy";
+const SHOWCASE_RUN_ID = "C79YwCQLkC8VkqOU0Ezf";
 
 const icons = {
   arrow: <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" /></svg>,
