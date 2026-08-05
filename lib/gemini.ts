@@ -3,7 +3,7 @@ import { auditJsonSchema, modelAuditSchema } from "@/lib/schema";
 import type { SourceSnapshot } from "@/lib/types";
 
 export const GEMINI_MODEL = "gemini-3.6-flash";
-const GEMINI_FALLBACK_MODEL = "gemini-3.5-flash";
+const GEMINI_FALLBACK_MODEL = "gemini-3.5-flash-lite";
 
 function upstreamMessage(error: unknown): string {
   if (error && typeof error === "object" && "message" in error) {
