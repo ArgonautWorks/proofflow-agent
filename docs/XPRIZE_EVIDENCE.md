@@ -6,8 +6,10 @@ Evidence package date: **August 5, 2026**
 
 - Application: <https://proofflow-agent.vercel.app>
 - Firestore-writing health endpoint: <https://proofflow-agent.vercel.app/api/health>
-- Persisted audit JSON: <https://proofflow-agent.vercel.app/api/runs/IxlFsvwqGZJ8ZHhQJ9dy>
-- Persisted audit evidence pack: <https://proofflow-agent.vercel.app/api/runs/IxlFsvwqGZJ8ZHhQJ9dy/report>
+- Embedding-grounded audit JSON: <https://proofflow-agent.vercel.app/api/runs/JnaXEn0WwtT4eqLdCqgG>
+- Embedding-grounded evidence pack: <https://proofflow-agent.vercel.app/api/runs/JnaXEn0WwtT4eqLdCqgG/report>
+- Gemma-prioritized audit JSON: <https://proofflow-agent.vercel.app/api/runs/IxlFsvwqGZJ8ZHhQJ9dy>
+- Gemma-prioritized evidence pack: <https://proofflow-agent.vercel.app/api/runs/IxlFsvwqGZJ8ZHhQJ9dy/report>
 - Public source: <https://github.com/ArgonautWorks/proofflow-agent>
 - Demo video: <https://youtu.be/kqhoyUaeGdI>
 

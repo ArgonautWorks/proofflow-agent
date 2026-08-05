@@ -5,8 +5,10 @@ ProofFlow uses a real Cloud Firestore database in the Firebase project `proofflo
 ## Runtime evidence
 
 - Public health endpoint: <https://proofflow-agent.vercel.app/api/health>
-- Firestore-backed audit: <https://proofflow-agent.vercel.app/api/runs/IxlFsvwqGZJ8ZHhQJ9dy>
+- Gemma-prioritized Firestore audit: <https://proofflow-agent.vercel.app/api/runs/IxlFsvwqGZJ8ZHhQJ9dy>
 - Evidence pack generated from that record: <https://proofflow-agent.vercel.app/api/runs/IxlFsvwqGZJ8ZHhQJ9dy/report>
+- Embedding-grounded Firestore audit: <https://proofflow-agent.vercel.app/api/runs/JnaXEn0WwtT4eqLdCqgG>
+- Evidence pack generated from that record: <https://proofflow-agent.vercel.app/api/runs/JnaXEn0WwtT4eqLdCqgG/report>
 - Database: Firestore Standard edition, `(default)` database
 - Region: `europe-west4` (Netherlands)
 - Billing: Firebase Spark plan, $0/month
