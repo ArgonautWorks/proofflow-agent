@@ -9,7 +9,7 @@ Built from scratch for the **All Things Agentic Hackathon** in the **Taskmaster*
 - Product: [proofflow-agent.vercel.app](https://proofflow-agent.vercel.app)
 - Public demo video (1:48): [youtu.be/kqhoyUaeGdI](https://youtu.be/kqhoyUaeGdI)
 - Firestore-backed health: [proofflow-agent.vercel.app/api/health](https://proofflow-agent.vercel.app/api/health)
-- Latest live audit: [JSON](https://proofflow-agent.vercel.app/api/runs/wiifW2b4AAj8hsTVVDad) · [Markdown evidence pack](https://proofflow-agent.vercel.app/api/runs/wiifW2b4AAj8hsTVVDad/report)
+- Latest live audit: [JSON](https://proofflow-agent.vercel.app/api/runs/TiuPE6fJv3JuAamQvAIp) · [Markdown evidence pack](https://proofflow-agent.vercel.app/api/runs/TiuPE6fJv3JuAamQvAIp/report)
 - Cloud deployment evidence: [docs/CLOUD_PROOF.md](docs/CLOUD_PROOF.md)
 - Build-window provenance: [docs/BUILD_PROVENANCE.md](docs/BUILD_PROVENANCE.md)
 
@@ -38,7 +38,7 @@ The Next.js server runs the bounded orchestration layer. Firebase Admin access i
 
 ## Sponsor technology
 
-- **Gemini 3.6 Flash** through the official **Google GenAI SDK** (`@google/genai`), with Gemini 3.5 Flash as a standards-compliant availability fallback
+- **Gemini 3.6 Flash** through the official **Google GenAI SDK** (`@google/genai`), with Gemini 3.5 Flash Lite as a standards-compliant availability fallback
 - **Cloud Firestore** in the `proofflow-agent` Firebase project
 - Next.js 16 and React 19 on Vercel
 - Zod schema validation and Vitest
@@ -94,6 +94,12 @@ Other routes:
 - `GET /api/runs/{id}` — retrieve a persisted audit;
 - `GET /api/runs/{id}/report` — download its Markdown evidence pack; and
 - `GET /api/health` — verify the server and Firestore path.
+
+## Paid agent API
+
+The free UI remains available for evaluation. Autonomous buyers can request higher-priority machine-readable audits through `POST /api/v1/audits` for **$0.05 USDC on Base** using x402 v2. The paid handler validates the sources, checks capacity, and completes model inference before settlement; invalid inputs, capacity failures, and upstream model errors are not charged.
+
+Discovery is available at `/openapi.json`, `/.well-known/x402`, and `/llms.txt`. Payments settle directly to the ArgonautWorks receiving wallet without an account, subscription, or API key.
 
 ## Guardrails
 

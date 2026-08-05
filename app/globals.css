@@ -83,6 +83,7 @@ h1 em { display: block; color: var(--blue); font-family: Georgia, 'Times New Rom
 .spinner { width: 17px; height: 17px; border: 2px solid rgba(255,255,255,.35); border-top-color: white; border-radius: 50%; animation: spin .8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 .form-note { text-align: center; color: var(--muted); margin: 13px 0 0; font: 9px ui-monospace, monospace; text-transform: uppercase; letter-spacing: .08em; }
+.form-note a { color: var(--blue); font-weight: 800; }
 
 .results-empty { position: relative; overflow: hidden; min-height: 360px; border: 1px dashed #aaa99f; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
 .empty-grid { position: absolute; inset: 0; opacity: .25; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(to bottom, transparent, black, transparent); }

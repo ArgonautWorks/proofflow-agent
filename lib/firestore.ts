@@ -41,6 +41,17 @@ export async function enforceRateLimit(ip: string): Promise<void> {
   });
 }
 
+export async function enforcePaidCapacity(): Promise<void> {
+  const day = new Date().toISOString().slice(0, 10);
+  const ref = database().collection("proof_flow_limits").doc(`paid_${day}`);
+  await database().runTransaction(async (transaction) => {
+    const snapshot = await transaction.get(ref);
+    const count = Number(snapshot.data()?.count ?? 0);
+    if (count >= 25) throw new Error("Daily paid audit capacity has been reached");
+    transaction.set(ref, { count: count + 1, updatedAt: FieldValue.serverTimestamp() }, { merge: true });
+  });
+}
+
 export async function persistAudit(result: Omit<AuditResult, "id">): Promise<AuditResult> {
   const ref = database().collection("proof_flow_audits").doc();
   const complete = { ...result, id: ref.id };

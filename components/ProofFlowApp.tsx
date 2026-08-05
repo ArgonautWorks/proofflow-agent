@@ -6,7 +6,7 @@ import type { AuditCounts, AuditResult, RequirementStatus } from "@/lib/types";
 const DEFAULT_RULES = "https://allthingsagentichackathon.devpost.com/rules";
 const DEFAULT_REPO = "https://github.com/ArgonautWorks/proofflow-agent";
 const DEFAULT_PROJECT = "https://proofflow-agent.vercel.app";
-const SHOWCASE_RUN_ID = "wiifW2b4AAj8hsTVVDad";
+const SHOWCASE_RUN_ID = "TiuPE6fJv3JuAamQvAIp";
 
 const icons = {
   arrow: <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 3.5 13 8l-4.5 4.5" /></svg>,
@@ -77,6 +77,7 @@ export function ProofFlowApp() {
         <div className="nav-links">
           <a href="#workflow">Workflow</a>
           <a href="#architecture">Architecture</a>
+          <a href="/openapi.json">Agent API</a>
           <a href="https://github.com/ArgonautWorks/proofflow-agent" target="_blank" rel="noreferrer">Source</a>
         </div>
         <span className="live-pill"><b /> FIRESTORE LIVE</span>
@@ -89,7 +90,7 @@ export function ProofFlowApp() {
             <h1>Turn binding rules into <em>judge-ready proof.</em></h1>
             <p className="lede">ProofFlow reads the fine print, inspects the actual build, verifies live evidence, and locks a submission ledger—without another spreadsheet.</p>
             <div className="tech-row">
-              <span>GEMINI 3.6 FLASH</span><span>GOOGLE GENAI SDK</span><span>FIRESTORE</span>
+              <span>GEMINI 3.6 FLASH</span><span>GOOGLE GENAI SDK</span><span>FIRESTORE</span><span>X402 · BASE USDC</span>
             </div>
           </div>
           <div className="hero-aside">
@@ -138,7 +139,7 @@ export function ProofFlowApp() {
             <button className="run-button" type="submit" disabled={loading}>
               <span>{loading ? "AGENT RUNNING" : "RUN AUTONOMOUS AUDIT"}</span>{loading ? <i className="spinner" /> : icons.arrow}
             </button>
-            <p className="form-note">Public sources only · 3 runs per client/day · no repository writes</p>
+            <p className="form-note">Public sources only · 3 free runs/client/day · <a href="/openapi.json">paid agent API $0.05 x402</a></p>
           </form>
         </div>
       </section>
@@ -228,7 +229,7 @@ export function ProofFlowApp() {
       <footer className="shell">
         <div className="brand"><span className="brand-mark"><i /><i /><i /></span><span>PROOF/FLOW</span></div>
         <p>Built by ArgonautWorks for the All Things Agentic Hackathon.</p>
-        <a href="https://github.com/ArgonautWorks/proofflow-agent" target="_blank" rel="noreferrer">VIEW PUBLIC SOURCE {icons.arrow}</a>
+        <a href="/openapi.json">VIEW AGENT API {icons.arrow}</a>
       </footer>
     </main>
   );

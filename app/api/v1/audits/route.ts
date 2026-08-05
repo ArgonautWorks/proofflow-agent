@@ -1,24 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
+import { withX402FromHTTPServer } from "@x402/next";
 import { runProofFlow } from "@/lib/agent";
-import { enforceRateLimit } from "@/lib/firestore";
+import { enforcePaidCapacity } from "@/lib/firestore";
 import { auditErrorResponse } from "@/lib/http";
 import { auditInputSchema } from "@/lib/schema";
+import { x402HttpServer } from "@/lib/x402";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
-function clientIp(request: NextRequest): string {
-  return request.headers.get("x-vercel-forwarded-for")?.split(",")[0]?.trim()
-    || request.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
-    || "unknown";
-}
-
-export async function POST(request: NextRequest) {
+async function handler(request: NextRequest): Promise<NextResponse<unknown>> {
   try {
     const contentLength = Number(request.headers.get("content-length") ?? 0);
-    if (contentLength > 10_000) return NextResponse.json({ error: "Request is too large" }, { status: 413 });
+    if (contentLength > 10_000) {
+      return NextResponse.json({ error: "Request is too large", charged: false }, { status: 413 });
+    }
     const input = auditInputSchema.parse(await request.json());
-    await enforceRateLimit(clientIp(request));
+    await enforcePaidCapacity();
     const audit = await runProofFlow({
       rulesUrl: input.rulesUrl,
       repoUrl: input.repoUrl,
@@ -29,3 +27,5 @@ export async function POST(request: NextRequest) {
     return auditErrorResponse(error);
   }
 }
+
+export const POST = withX402FromHTTPServer<unknown>(handler, x402HttpServer);
