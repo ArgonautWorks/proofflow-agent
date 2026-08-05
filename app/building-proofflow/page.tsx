@@ -152,7 +152,7 @@ export default function BuildingProofFlow() {
             <Link href="/"><span>LIVE APPLICATION</span><b>Run the free browser audit</b><i>↗</i></Link>
             <a href="https://github.com/ArgonautWorks/proofflow-agent"><span>PUBLIC SOURCE</span><b>Read the production implementation</b><i>↗</i></a>
             <a href="https://youtu.be/kqhoyUaeGdI"><span>DEMO VIDEO</span><b>Watch an end-to-end audit</b><i>↗</i></a>
-            <Link href="/api/runs/JnaXEn0WwtT4eqLdCqgG/report"><span>SAMPLE OUTPUT</span><b>Open the embedding-grounded evidence pack</b><i>↗</i></Link>
+            <Link href="/api/runs/C79YwCQLkC8VkqOU0Ezf/report"><span>SAMPLE OUTPUT</span><b>Open the Gemma + embedding evidence pack</b><i>↗</i></Link>
           </div>
         </section>
 

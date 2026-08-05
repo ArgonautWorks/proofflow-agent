@@ -10,7 +10,7 @@ Built from scratch for the **All Things Agentic Hackathon** in the **Taskmaster*
 - Product: [proofflow-agent.vercel.app](https://proofflow-agent.vercel.app)
 - Public demo video (1:48): [youtu.be/kqhoyUaeGdI](https://youtu.be/kqhoyUaeGdI)
 - Firestore-backed health: [proofflow-agent.vercel.app/api/health](https://proofflow-agent.vercel.app/api/health)
-- Latest embedding-grounded audit: [JSON](https://proofflow-agent.vercel.app/api/runs/JnaXEn0WwtT4eqLdCqgG) · [Markdown evidence pack](https://proofflow-agent.vercel.app/api/runs/JnaXEn0WwtT4eqLdCqgG/report)
+- Latest Gemma + embedding audit: [JSON](https://proofflow-agent.vercel.app/api/runs/C79YwCQLkC8VkqOU0Ezf) · [Markdown evidence pack](https://proofflow-agent.vercel.app/api/runs/C79YwCQLkC8VkqOU0Ezf/report) · [passing production trace](https://github.com/ArgonautWorks/proofflow-agent/actions/runs/31054527193)
 - Gemma-prioritized audit: [JSON](https://proofflow-agent.vercel.app/api/runs/IxlFsvwqGZJ8ZHhQJ9dy) · [Markdown evidence pack](https://proofflow-agent.vercel.app/api/runs/IxlFsvwqGZJ8ZHhQJ9dy/report)
 - Cloud deployment evidence: [docs/CLOUD_PROOF.md](docs/CLOUD_PROOF.md)
 - Build-window provenance: [docs/BUILD_PROVENANCE.md](docs/BUILD_PROVENANCE.md)
