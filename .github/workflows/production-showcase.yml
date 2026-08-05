@@ -24,7 +24,7 @@ jobs:
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
-              rulesUrl: "https://all-things-agentic.devpost.com/rules",
+              rulesUrl: "https://allthingsagentichackathon.devpost.com/rules",
               repoUrl: "https://github.com/ArgonautWorks/proofflow-agent",
               projectUrl: process.env.PROOFFLOW_URL,
             }),
