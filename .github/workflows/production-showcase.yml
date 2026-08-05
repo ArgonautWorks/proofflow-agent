@@ -1,0 +1,62 @@
+name: Production showcase audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-showcase-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Run and verify the public production workflow
+        env:
+          PROOFFLOW_URL: https://proofflow-agent.vercel.app
+        run: |
+          node <<'NODE'
+          const response = await fetch(`${process.env.PROOFFLOW_URL}/api/analyze`, {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+              rulesUrl: "https://all-things-agentic.devpost.com/rules",
+              repoUrl: "https://github.com/ArgonautWorks/proofflow-agent",
+              projectUrl: process.env.PROOFFLOW_URL,
+            }),
+            signal: AbortSignal.timeout(60_000),
+          });
+
+          if (response.status !== 201) {
+            throw new Error(`Production audit returned ${response.status}: ${await response.text()}`);
+          }
+
+          const { audit } = await response.json();
+          const risks = new Set(audit.topRisks ?? []);
+          const checks = {
+            persistedAuditId: typeof audit.id === "string" && audit.id.length > 0,
+            gemmaPriority: audit.operationalPriority?.model === "gemma-4-26b-a4b-it",
+            embeddingGrounding: audit.semanticAlignment?.model === "gemini-embedding-2",
+            groundedInValidatedRisk: risks.has(audit.semanticAlignment?.matchedRisk),
+            completeTrace: audit.actionsPerformed?.length === 6,
+          };
+
+          if (Object.values(checks).some((value) => !value)) {
+            throw new Error(`Production provenance checks failed: ${JSON.stringify(checks)}`);
+          }
+
+          console.log(`SHOWCASE_AUDIT_ID=${audit.id}`);
+          console.log(JSON.stringify({
+            score: audit.score,
+            evidenceModel: audit.model,
+            operationalModel: audit.operationalPriority.model,
+            semanticModel: audit.semanticAlignment.model,
+            semanticScore: audit.semanticAlignment.score,
+            matchedRisk: audit.semanticAlignment.matchedRisk,
+            actionsPerformed: audit.actionsPerformed.length,
+          }, null, 2));
+          NODE
