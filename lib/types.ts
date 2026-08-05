@@ -53,6 +53,13 @@ export interface AgentAction {
   status: "completed" | "attention";
 }
 
+export interface OperationalPriority {
+  action: string;
+  rationale: string;
+  selection: "gemma" | "deterministic";
+  model: string | null;
+}
+
 export interface AuditResult {
   id: string;
   projectName: string;
@@ -63,6 +70,7 @@ export interface AuditResult {
   requirements: AuditRequirement[];
   topRisks: string[];
   nextActions: string[];
+  operationalPriority?: OperationalPriority;
   actionsPerformed: AgentAction[];
   sourceSnapshot: SourceSnapshot;
   model: string;

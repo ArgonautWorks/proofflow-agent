@@ -14,8 +14,8 @@ export async function GET(request: NextRequest) {
     openapi: "3.1.0",
     info: {
       title: "ProofFlow Audit API",
-      version: "0.3.0",
-      description: "Source-cited Devpost submission-compliance audits powered by Gemini and persisted in Firestore.",
+      version: "0.4.0",
+      description: "Source-cited Devpost submission-compliance audits powered by Gemini, prioritized by Gemma, and persisted in Firestore.",
       "x-guidance": `Use POST ${PAID_AUDIT_PATH} when an agent needs to compare public Devpost rules with a public GitHub repository and optional deployment. Send rulesUrl and repoUrl as HTTPS URLs, plus projectUrl when available. The paid response is a persisted evidence ledger with a readiness score, requirement statuses, cited evidence, risks, next actions, and report links. Use GET ${PAID_AUDIT_PATH} for free purchase instructions; it never creates or charges for an audit.`,
       license: { name: "Apache-2.0", identifier: "Apache-2.0" },
       contact: { name: "ArgonautWorks", url: "https://github.com/ArgonautWorks/proofflow-agent" },
@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
             content: { "application/json": { schema: paidAuditInputSchema, example: paidAuditExample } },
           },
           responses: {
-            201: { description: "Persisted JSON audit with requirement ledger and report route" },
+            201: { description: "Persisted JSON audit with requirement ledger, bounded operational priority, and report route" },
             400: { description: "Invalid or unsupported public source; payment is not settled" },
             402: { description: "x402 Base-USDC payment challenge" },
             429: { description: "Daily paid capacity reached; payment is not settled" },

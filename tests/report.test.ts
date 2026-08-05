@@ -23,6 +23,12 @@ const audit: AuditResult = {
   }],
   topRisks: [],
   nextActions: ["Record the demo."],
+  operationalPriority: {
+    action: "Record the demo.",
+    rationale: "The mandatory demo is the highest-impact gap.",
+    selection: "gemma",
+    model: "gemma-4-26b-a4b-it",
+  },
   actionsPerformed: [{ label: "Repository scanned", detail: "Two files found.", status: "completed" }],
   sourceSnapshot: {
     checkedAt: "2026-08-05T00:00:00.000Z",
@@ -50,5 +56,6 @@ describe("evidence report", () => {
     expect(report).toContain("README.md; app/page.tsx");
     expect(report).toContain("Rules SHA-256: `abc123`");
     expect(report).toContain("Record the demo.");
+    expect(report).toContain("Gemma 4");
   });
 });

@@ -8,7 +8,7 @@ const STORY_URL = `${SITE_ORIGIN}${STORY_PATH}`;
 export const metadata: Metadata = {
   title: "Building ProofFlow: from binding rules to a judge-ready evidence ledger",
   description:
-    "How ProofFlow combines Gemini structured reasoning, deterministic source checks, and Firestore to audit hackathon submissions without inventing evidence.",
+    "How ProofFlow combines Gemini structured reasoning, Gemma action prioritization, deterministic source checks, and Firestore without inventing evidence.",
   alternates: { canonical: STORY_PATH },
   openGraph: {
     title: "Building ProofFlow",
@@ -42,8 +42,13 @@ const stages = [
   },
   {
     number: "04",
+    title: "Choose the handoff",
+    text: "Gemma 4 receives only the validated risk and action lists, then must call one bounded function with an existing action index. An invalid or unavailable response falls back to the first validated action without weakening the audit.",
+  },
+  {
+    number: "05",
     title: "Persist the ledger",
-    text: "The final score, requirement findings, risks, next actions, source fingerprints, and model provenance are stored in private-by-default Firestore and rendered as JSON or a portable Markdown report.",
+    text: "The final score, requirement findings, risks, selected operational priority, source fingerprints, and model provenance are stored in private-by-default Firestore and rendered as JSON or a portable Markdown report.",
   },
 ];
 
@@ -75,7 +80,7 @@ export default function BuildingProofFlow() {
           <div className="story-meta">
             <span>BY ARGONAUTWORKS</span>
             <span>7 MIN READ</span>
-            <span>GEMINI · FIRESTORE · NEXT.JS</span>
+            <span>GEMINI · GEMMA · FIRESTORE · NEXT.JS</span>
           </div>
         </header>
 
@@ -95,7 +100,7 @@ export default function BuildingProofFlow() {
         <section className="story-section" id="pipeline">
           <div className="story-section-head">
             <span>01 / PIPELINE</span>
-            <h2>Four bounded stages</h2>
+            <h2>Five bounded stages</h2>
           </div>
           <div className="story-stages">
             {stages.map((stage) => (
