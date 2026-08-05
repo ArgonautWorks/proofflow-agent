@@ -16,6 +16,7 @@ export async function GET(request: NextRequest) {
       title: "ProofFlow Audit API",
       version: "0.3.0",
       description: "Source-cited Devpost submission-compliance audits powered by Gemini and persisted in Firestore.",
+      "x-guidance": `Use POST ${PAID_AUDIT_PATH} when an agent needs to compare public Devpost rules with a public GitHub repository and optional deployment. Send rulesUrl and repoUrl as HTTPS URLs, plus projectUrl when available. The paid response is a persisted evidence ledger with a readiness score, requirement statuses, cited evidence, risks, next actions, and report links. Use GET ${PAID_AUDIT_PATH} for free purchase instructions; it never creates or charges for an audit.`,
       license: { name: "Apache-2.0", identifier: "Apache-2.0" },
       contact: { name: "ArgonautWorks", url: "https://github.com/ArgonautWorks/proofflow-agent" },
     },
