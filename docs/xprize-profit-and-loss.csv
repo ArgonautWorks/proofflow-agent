@@ -1,0 +1,6 @@
+Month,Revenue_USD,Cost_of_Goods_Sold_USD,Marketing_Expense_USD,Additional_Expense_USD,Total_Expense_USD,Net_Profit_USD,External_Users,Paying_Users,Notes
+2026-05,0.00,0.00,0.00,0.00,0.00,0.00,0,0,"Business did not exist"
+2026-06,0.00,0.00,0.00,0.00,0.00,0,0,"Business did not exist"
+2026-07,0.00,0.00,0.00,0.00,0.00,0,0,"Business did not exist"
+2026-08,0.00,0.00,0.00,0.00,0.00,0,0,"Started 2026-08-05; internal tests, operator runs, unpaid directory probes, and judge traffic excluded"
+TOTAL,0.00,0.00,0.00,0.00,0.00,0.00,0,0,"No realized external revenue, related-party revenue, or expense through package date 2026-08-05"
