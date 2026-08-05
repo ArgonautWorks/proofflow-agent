@@ -4,6 +4,14 @@ ProofFlow turns binding hackathon rules and live project artifacts into a strict
 
 Built from scratch for the **All Things Agentic Hackathon** in the **Taskmaster** category.
 
+## Live proof
+
+- Product: [proofflow-agent.vercel.app](https://proofflow-agent.vercel.app)
+- Firestore-backed health: [proofflow-agent.vercel.app/api/health](https://proofflow-agent.vercel.app/api/health)
+- Latest live audit: [JSON](https://proofflow-agent.vercel.app/api/runs/wiifW2b4AAj8hsTVVDad) · [Markdown evidence pack](https://proofflow-agent.vercel.app/api/runs/wiifW2b4AAj8hsTVVDad/report)
+- Cloud deployment evidence: [docs/CLOUD_PROOF.md](docs/CLOUD_PROOF.md)
+- Build-window provenance: [docs/BUILD_PROVENANCE.md](docs/BUILD_PROVENANCE.md)
+
 ## Why it exists
 
 Submission compliance is a messy, high-stakes last-mile workflow. Requirements are scattered across rules, overview pages, repository documentation, deployment dashboards, and video checklists. A generic chatbot can summarize those sources, but it does not prove which obligations are actually satisfied.
