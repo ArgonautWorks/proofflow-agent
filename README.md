@@ -105,6 +105,9 @@ Free agent discovery is also available at `/.well-known/agent-card.json` and `PO
 
 - [x402scan service page](https://www.x402scan.com/server/0cd77797-74c0-4dfa-a7f4-047ce5c35afb)
 - [PayanAgent relay offer](https://payanagent.com/x402/kh78bdhmjvfteqqpfq06e5g3g98bw5ks)
+- [Agent Tools paid-service card](https://agent-tools.cloud/services/proofflow-agent-vercel-app-sub180)
+- [Agent Tools A2A card](https://agent-tools.cloud/a2a/agents/argonautworks-proofflow-audit-api)
+- [A2A Registry verified agent](https://a2aregistry.org/api/agents/5e987ee5-1f3d-430e-a3c6-5abc940d1ea0)
 
 Directory records and unpaid challenge probes are distribution evidence, not revenue.
 
