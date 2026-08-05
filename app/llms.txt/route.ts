@@ -10,7 +10,7 @@ export function GET() {
     `Paid JSON POST: ${PAID_AUDIT_PATH}`,
     `Price: ${PAID_AUDIT_PRICE} USDC on Base via x402 v2.`,
     "Body: {rulesUrl, repoUrl, projectUrl?}",
-    "Output: persisted evidence ledger with score, requirements, evidence, risks, next actions, source hashes, and model provenance.",
+    "Output: persisted evidence ledger with score, requirements, evidence, risks, Gemma-selected operational priority, source hashes, and model provenance.",
     "Failed validation, capacity checks, and upstream model failures are not settled.",
     "Free trial UI: /",
     "OpenAPI: /openapi.json",

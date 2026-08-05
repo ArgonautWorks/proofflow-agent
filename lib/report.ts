@@ -10,6 +10,9 @@ export function createEvidenceReport(audit: AuditResult): string {
   ).join("\n");
   const actions = audit.actionsPerformed.map((item) => `- **${item.label}** (${item.status}): ${item.detail}`).join("\n");
   const next = audit.nextActions.map((item, index) => `${index + 1}. ${item}`).join("\n");
+  const operationalPriority = audit.operationalPriority
+    ? `## Operational priority\n\n**${audit.operationalPriority.action}**\n\n${audit.operationalPriority.rationale}\n\nSelector: ${audit.operationalPriority.model ? `Gemma 4 (${audit.operationalPriority.model})` : "deterministic fallback"}\n\n`
+    : "";
 
   return `# ${audit.projectName} — ProofFlow evidence pack
 
@@ -39,7 +42,7 @@ ${requirements}
 
 ${next}
 
-## Source lock
+${operationalPriority}## Source lock
 
 - Rules: ${audit.sourceSnapshot.rules.url}
 - Rules SHA-256: \`${audit.sourceSnapshot.rules.sha256}\`

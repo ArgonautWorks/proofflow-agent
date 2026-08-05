@@ -10,6 +10,10 @@ export async function GET() {
       ok: true,
       service: "proofflow-agent",
       model: "gemini-3.6-flash",
+      models: {
+        evidenceReasoning: "gemini-3.6-flash",
+        operationalPrioritization: "gemma-4-26b-a4b-it",
+      },
       firestore: "connected",
       timestamp: new Date().toISOString(),
     });

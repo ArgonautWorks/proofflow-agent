@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
   <title id="title">ProofFlow Agent architecture</title>
-  <desc id="desc">Devpost, GitHub, and a live deployment feed a bounded source collector. Gemini reasons over structured evidence, Zod validates it, and Firestore stores the evidence ledger for the web interface and downloadable report.</desc>
+  <desc id="desc">Devpost, GitHub, and a live deployment feed a bounded source collector. Gemini reasons over structured evidence, Zod validates it, Gemma selects one existing action through a forced function call, and Firestore stores the evidence ledger.</desc>
   <rect width="1200" height="520" fill="#f2f0e8"/>
   <text x="64" y="62" fill="#151817" font-family="Arial, sans-serif" font-size="26" font-weight="700">PROOF/FLOW — AUDITABLE AGENT PIPELINE</text>
   <text x="64" y="88" fill="#686a63" font-family="monospace" font-size="12" letter-spacing="2">PUBLIC INPUTS → REASONING → VALIDATION → DURABLE ACTION</text>
@@ -41,9 +41,9 @@
 
     <rect x="676" y="306" width="222" height="112" fill="#fbfaf5" stroke="#151817"/>
     <rect x="676" y="306" width="222" height="7" fill="#ff6a3d"/>
-    <text x="700" y="344" fill="#686a63" font-family="monospace" font-size="11">06 / VERIFY</text>
-    <text x="700" y="375" fill="#151817" font-size="19" font-weight="700">JSON SCHEMA + ZOD</text>
-    <text x="700" y="397" fill="#686a63" font-size="12">Fail closed on malformed output</text>
+    <text x="700" y="344" fill="#686a63" font-family="monospace" font-size="11">06 / VERIFY + PRIORITIZE</text>
+    <text x="700" y="375" fill="#151817" font-size="18" font-weight="700">ZOD → GEMMA 4</text>
+    <text x="700" y="397" fill="#686a63" font-size="12">Function-bound action index</text>
 
     <path d="M787 272V306" fill="none" stroke="#151817" stroke-width="2"/>
     <path d="m779 297 8 12 8-12" fill="none" stroke="#151817" stroke-width="2"/>

@@ -33,7 +33,7 @@ const METADATA = {
     },
     additionalProperties: false,
   }),
-  outputSchema: "{audit:{id, projectName, contestName, executiveSummary, score, overallStatus, requirements[], topRisks[], nextActions[], actionsPerformed[], sourceSnapshot, model, completedAt}}",
+  outputSchema: "{audit:{id, projectName, contestName, executiveSummary, score, overallStatus, requirements[], topRisks[], nextActions[], operationalPriority, actionsPerformed[], sourceSnapshot, model, completedAt}}",
 };
 
 function headers(apiKey) {

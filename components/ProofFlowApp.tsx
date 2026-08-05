@@ -91,12 +91,12 @@ export function ProofFlowApp() {
             <h1>Turn binding rules into <em>judge-ready proof.</em></h1>
             <p className="lede">ProofFlow reads the fine print, inspects the actual build, verifies live evidence, and locks a submission ledger—without another spreadsheet.</p>
             <div className="tech-row">
-              <span>GEMINI 3.6 FLASH</span><span>GOOGLE GENAI SDK</span><span>FIRESTORE</span><span>X402 · BASE USDC</span>
+              <span>GEMINI 3.6 FLASH</span><span>GEMMA 4</span><span>GOOGLE GENAI SDK</span><span>FIRESTORE</span><span>X402 · BASE USDC</span>
             </div>
           </div>
           <div className="hero-aside">
             <div className="signal"><span>AGENT STATE</span><b>READY</b></div>
-            <p>Rules → requirements → evidence → action pack</p>
+            <p>Rules → evidence → Gemma priority → action pack</p>
             <div className="mini-flow"><i>R</i><hr /><i>E</i><hr /><i>V</i><hr /><i>L</i></div>
           </div>
         </div>
@@ -105,7 +105,7 @@ export function ProofFlowApp() {
       <section className="agent-console shell" id="workflow">
         <div className="console-head">
           <div><span className="section-number">02</span><h2>Launch an evidence run</h2></div>
-          <p>One bounded workflow. Four autonomous actions. A durable result.</p>
+          <p>One bounded workflow. Five autonomous actions. A durable result.</p>
         </div>
         <div className="console-grid">
           <div className="workflow-rail">
@@ -179,6 +179,14 @@ export function ProofFlowApp() {
               <div className="source-lock"><span>RULES LOCK</span><code>{audit.sourceSnapshot.rules.sha256.slice(0, 12)}…</code></div>
             </div>
 
+            {audit.operationalPriority && (
+              <div className={`priority-brief ${audit.operationalPriority.selection}`}>
+                <div><span>GEMMA 4 · OPERATIONAL PRIORITY</span><small>{audit.operationalPriority.model ?? "deterministic fallback"}</small></div>
+                <h3>{audit.operationalPriority.action}</h3>
+                <p>{audit.operationalPriority.rationale}</p>
+              </div>
+            )}
+
             <div className="ledger-head"><span>Requirement</span><span>Evidence state</span><span>Next action</span></div>
             <div className="ledger">
               {requirements.map((item) => (
@@ -217,7 +225,9 @@ export function ProofFlowApp() {
             <i>{icons.arrow}</i>
             <div className="arch-node model"><span>02</span><b>GEMINI 3.6</b><p>Structured requirement reasoning</p></div>
             <i>{icons.arrow}</i>
-            <div className="arch-node cloud"><span>03</span><b>FIRESTORE</b><p>Durable evidence ledger</p></div>
+            <div className="arch-node priority"><span>03</span><b>GEMMA 4</b><p>Function-bound action selection</p></div>
+            <i>{icons.arrow}</i>
+            <div className="arch-node cloud"><span>04</span><b>FIRESTORE</b><p>Durable evidence ledger</p></div>
           </div>
           <div className="principles">
             <div><span>STRICT</span><p>Missing evidence is never rewritten as confidence.</p></div>
