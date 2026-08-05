@@ -15,6 +15,7 @@ export function GET() {
     "Free trial UI: /",
     "OpenAPI: /openapi.json",
     "x402 manifest: /.well-known/x402",
+    "A2A discovery: /.well-known/agent-card.json and POST /a2a.",
     "PayanAgent relay: https://payanagent.com/x402/kh78bdhmjvfteqqpfq06e5g3g98bw5ks",
     "Source: https://github.com/ArgonautWorks/proofflow-agent",
     "",

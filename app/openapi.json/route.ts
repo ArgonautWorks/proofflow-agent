@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     openapi: "3.1.0",
     info: {
       title: "ProofFlow Audit API",
-      version: "0.2.0",
+      version: "0.3.0",
       description: "Source-cited Devpost submission-compliance audits powered by Gemini and persisted in Firestore.",
       license: { name: "Apache-2.0", identifier: "Apache-2.0" },
       contact: { name: "ArgonautWorks", url: "https://github.com/ArgonautWorks/proofflow-agent" },
@@ -41,6 +41,15 @@ export async function GET(request: NextRequest) {
             429: { description: "Daily paid capacity reached; payment is not settled" },
             503: { description: "Temporary upstream model failure; payment is not settled" },
           },
+        },
+      },
+      "/a2a": {
+        post: {
+          operationId: "sendProofFlowDiscoveryA2aMessage",
+          summary: "Return free purchase guidance without running an audit",
+          tags: ["Discovery"],
+          security: [],
+          responses: { 200: { description: "A2A JSON-RPC discovery response" } },
         },
       },
     },
