@@ -29,6 +29,11 @@ const audit: AuditResult = {
     selection: "gemma",
     model: "gemma-4-26b-a4b-it",
   },
+  semanticAlignment: {
+    model: "gemini-embedding-2",
+    score: 0.8123,
+    matchedRisk: "The deadline may be missed.",
+  },
   actionsPerformed: [{ label: "Repository scanned", detail: "Two files found.", status: "completed" }],
   sourceSnapshot: {
     checkedAt: "2026-08-05T00:00:00.000Z",
@@ -57,5 +62,7 @@ describe("evidence report", () => {
     expect(report).toContain("Rules SHA-256: `abc123`");
     expect(report).toContain("Record the demo.");
     expect(report).toContain("Gemma 4");
+    expect(report).toContain("81% alignment");
+    expect(report).toContain("Gemini Embedding 2");
   });
 });

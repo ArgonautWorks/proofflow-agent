@@ -1,8 +1,9 @@
 import { collectSources } from "@/lib/sources";
 import { reasonAboutEvidence } from "@/lib/gemini";
 import { selectOperationalPriority } from "@/lib/gemma";
+import { measurePriorityAlignment } from "@/lib/embedding";
 import { persistAudit } from "@/lib/firestore";
-import type { AgentAction, AuditInput, OperationalPriority } from "@/lib/types";
+import type { AgentAction, AuditInput, OperationalPriority, SemanticAlignment } from "@/lib/types";
 
 export async function runProofFlow(input: AuditInput) {
   const sourceSnapshot = await collectSources(input);
@@ -24,6 +25,15 @@ export async function runProofFlow(input: AuditInput) {
       selection: "deterministic",
       model: null,
     };
+  }
+  let semanticAlignment: SemanticAlignment | undefined;
+  try {
+    semanticAlignment = await measurePriorityAlignment({
+      action: operationalPriority.action,
+      risks: modelAudit.topRisks,
+    });
+  } catch {
+    semanticAlignment = undefined;
   }
   const actionsPerformed: AgentAction[] = [
     {
@@ -55,12 +65,20 @@ export async function runProofFlow(input: AuditInput) {
         : "The validated first action was retained without weakening the core audit.",
       status: operationalPriority.selection === "gemma" ? "completed" : "attention",
     },
+    {
+      label: "Priority grounding measured",
+      detail: semanticAlignment
+        ? `Gemini Embedding 2 measured ${Math.round(semanticAlignment.score * 100)}% semantic alignment to the closest validated risk.`
+        : "The optional embedding check was unavailable; the validated priority remains unchanged.",
+      status: semanticAlignment ? "completed" : "attention",
+    },
   ];
 
   return persistAudit({
     ...modelAudit,
     score: Math.max(0, Math.min(100, modelAudit.score)),
     operationalPriority,
+    semanticAlignment,
     actionsPerformed,
     sourceSnapshot,
     model,

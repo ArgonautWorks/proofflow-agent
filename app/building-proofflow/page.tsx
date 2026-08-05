@@ -8,7 +8,7 @@ const STORY_URL = `${SITE_ORIGIN}${STORY_PATH}`;
 export const metadata: Metadata = {
   title: "Building ProofFlow: from binding rules to a judge-ready evidence ledger",
   description:
-    "How ProofFlow combines Gemini structured reasoning, Gemma action prioritization, deterministic source checks, and Firestore without inventing evidence.",
+    "How ProofFlow combines Gemini structured reasoning, Gemma action prioritization, Gemini Embedding grounding, deterministic source checks, and Firestore without inventing evidence.",
   alternates: { canonical: STORY_PATH },
   openGraph: {
     title: "Building ProofFlow",
@@ -47,8 +47,13 @@ const stages = [
   },
   {
     number: "05",
+    title: "Measure the grounding",
+    text: "Gemini Embedding 2 maps the selected action and up to five validated risks into a shared 128-dimensional space. ProofFlow records the closest risk and cosine score without allowing the optional check to rewrite the audit.",
+  },
+  {
+    number: "06",
     title: "Persist the ledger",
-    text: "The final score, requirement findings, risks, selected operational priority, source fingerprints, and model provenance are stored in private-by-default Firestore and rendered as JSON or a portable Markdown report.",
+    text: "The final score, requirement findings, risks, selected operational priority, semantic-grounding result, source fingerprints, and model provenance are stored in private-by-default Firestore and rendered as JSON or a portable Markdown report.",
   },
 ];
 
@@ -80,7 +85,7 @@ export default function BuildingProofFlow() {
           <div className="story-meta">
             <span>BY ARGONAUTWORKS</span>
             <span>7 MIN READ</span>
-            <span>GEMINI · GEMMA · FIRESTORE · NEXT.JS</span>
+            <span>GEMINI · GEMMA · EMBEDDING 2 · FIRESTORE</span>
           </div>
         </header>
 
@@ -100,7 +105,7 @@ export default function BuildingProofFlow() {
         <section className="story-section" id="pipeline">
           <div className="story-section-head">
             <span>01 / PIPELINE</span>
-            <h2>Five bounded stages</h2>
+            <h2>Six bounded stages</h2>
           </div>
           <div className="story-stages">
             {stages.map((stage) => (

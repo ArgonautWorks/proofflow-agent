@@ -60,6 +60,12 @@ export interface OperationalPriority {
   model: string | null;
 }
 
+export interface SemanticAlignment {
+  model: string;
+  score: number;
+  matchedRisk: string;
+}
+
 export interface AuditResult {
   id: string;
   projectName: string;
@@ -71,6 +77,7 @@ export interface AuditResult {
   topRisks: string[];
   nextActions: string[];
   operationalPriority?: OperationalPriority;
+  semanticAlignment?: SemanticAlignment;
   actionsPerformed: AgentAction[];
   sourceSnapshot: SourceSnapshot;
   model: string;

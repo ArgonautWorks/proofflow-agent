@@ -13,6 +13,7 @@ export async function GET() {
       models: {
         evidenceReasoning: "gemini-3.6-flash",
         operationalPrioritization: "gemma-4-26b-a4b-it",
+        semanticGrounding: "gemini-embedding-2",
       },
       firestore: "connected",
       timestamp: new Date().toISOString(),
