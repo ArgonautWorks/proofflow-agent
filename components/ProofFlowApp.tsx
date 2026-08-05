@@ -105,7 +105,7 @@ export function ProofFlowApp() {
       <section className="agent-console shell" id="workflow">
         <div className="console-head">
           <div><span className="section-number">02</span><h2>Launch an evidence run</h2></div>
-          <p>One bounded workflow. Five autonomous actions. A durable result.</p>
+          <p>One bounded workflow. Six autonomous actions. A durable result.</p>
         </div>
         <div className="console-grid">
           <div className="workflow-rail">
@@ -184,6 +184,7 @@ export function ProofFlowApp() {
                 <div><span>GEMMA 4 · OPERATIONAL PRIORITY</span><small>{audit.operationalPriority.model ?? "deterministic fallback"}</small></div>
                 <h3>{audit.operationalPriority.action}</h3>
                 <p>{audit.operationalPriority.rationale}</p>
+                {audit.semanticAlignment && <p><strong>EMBEDDING 2 · {Math.round(audit.semanticAlignment.score * 100)}% GROUNDED</strong> · {audit.semanticAlignment.matchedRisk}</p>}
               </div>
             )}
 

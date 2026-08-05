@@ -15,9 +15,10 @@ Evidence package date: **August 5, 2026**
 
 - `lib/gemini.ts`: official Google GenAI SDK, primary and fallback Gemini models, schema-constrained output
 - `lib/gemma.ts`: Gemma 4 operational-priority selection constrained to an existing action index through a forced function call
+- `lib/embedding.ts`: Gemini Embedding 2 semantic-grounding measurement over the selected action and validated risk list
 - `lib/firestore.ts`: server-only Firestore writes, audit persistence, counters, and health state
 - `app/api/v1/audits/route.ts`: paid audit request lifecycle
-- `tests/`: 25 automated tests covering model-action binding, discovery, x402, A2A, report generation, monitoring, and security
+- `tests/`: 28 automated tests covering model-action binding, embedding validation, discovery, x402, A2A, report generation, monitoring, and security
 - `docs/BUILD_PROVENANCE.md`: repository start date and first-commit record
 
 ## Financial evidence

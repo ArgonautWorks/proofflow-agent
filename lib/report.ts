@@ -11,7 +11,7 @@ export function createEvidenceReport(audit: AuditResult): string {
   const actions = audit.actionsPerformed.map((item) => `- **${item.label}** (${item.status}): ${item.detail}`).join("\n");
   const next = audit.nextActions.map((item, index) => `${index + 1}. ${item}`).join("\n");
   const operationalPriority = audit.operationalPriority
-    ? `## Operational priority\n\n**${audit.operationalPriority.action}**\n\n${audit.operationalPriority.rationale}\n\nSelector: ${audit.operationalPriority.model ? `Gemma 4 (${audit.operationalPriority.model})` : "deterministic fallback"}\n\n`
+    ? `## Operational priority\n\n**${audit.operationalPriority.action}**\n\n${audit.operationalPriority.rationale}\n\nSelector: ${audit.operationalPriority.model ? `Gemma 4 (${audit.operationalPriority.model})` : "deterministic fallback"}\n\n${audit.semanticAlignment ? `Semantic grounding: ${Math.round(audit.semanticAlignment.score * 100)}% alignment to “${audit.semanticAlignment.matchedRisk}” via Gemini Embedding 2 (${audit.semanticAlignment.model})\n\n` : ""}`
     : "";
 
   return `# ${audit.projectName} — ProofFlow evidence pack

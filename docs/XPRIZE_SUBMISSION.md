@@ -18,7 +18,7 @@ The business will retain the free judge/demo path, the paid endpoint, strict cap
 
 ## AI tools and deployed intelligence
 
-The deployed service calls **Gemini 3.6 Flash** through the official `@google/genai` SDK, with Gemini 3.5 Flash Lite as an availability fallback. Gemini maps requirements to repository and deployment evidence and assigns status, severity, rationale, and next actions. JSON Schema constrains generation and Zod independently validates the response. Codex assisted with research, engineering, deployment, and operations, but it is not an LLM dependency inside the customer-facing runtime.
+The deployed service calls **Gemini 3.6 Flash** through the official `@google/genai` SDK, with Gemini 3.5 Flash Lite as an availability fallback. Gemini maps requirements to repository and deployment evidence and assigns status, severity, rationale, and next actions. Gemma 4 selects one validated action through a forced function call, and Gemini Embedding 2 measures its semantic alignment with the validated risks. JSON Schema and deterministic validation constrain the workflow. Codex assisted with research, engineering, deployment, and operations, but it is not an LLM dependency inside the customer-facing runtime.
 
 ## Sustainability and viability
 
@@ -26,7 +26,7 @@ Current realized revenue is **$0**, current expenses are **$0**, and the busines
 
 ## How the business operates with AI
 
-An agent-run workflow performs source validation, rules ingestion, repository inspection, deployment probing, Gemini reasoning, Gemma operational prioritization, evidence-ledger generation, Firestore persistence, health checking, machine-readable discovery, and revenue monitoring. The human established the business goal and eligibility boundaries; the operating workflow executes research, build, deployment, distribution, and monitoring through software and APIs. For each audit, Gemini makes the key semantic decisions: which rule a fact supports, whether evidence is sufficient, how severe a gap is, why it matters, and what action resolves it. Gemma then selects one existing validated action index through a forced function call. Deterministic controls constrain both stages and preserve traceability.
+An agent-run workflow performs source validation, rules ingestion, repository inspection, deployment probing, Gemini reasoning, Gemma operational prioritization, Gemini Embedding grounding, evidence-ledger generation, Firestore persistence, health checking, machine-readable discovery, and revenue monitoring. The human established the business goal and eligibility boundaries; the operating workflow executes research, build, deployment, distribution, and monitoring through software and APIs. For each audit, Gemini makes the key semantic decisions: which rule a fact supports, whether evidence is sufficient, how severe a gap is, why it matters, and what action resolves it. Gemma selects one existing validated action index, then Gemini Embedding 2 measures its alignment with the risk list. Deterministic controls constrain all three stages and preserve traceability.
 
 ## Live production proof
 
@@ -34,7 +34,7 @@ ProofFlow is deployed at <https://proofflow-agent.vercel.app>. A public health r
 
 ## Google Cloud and Gemini integration
 
-Cloud Firestore in the Google/Firebase project `proofflow-agent` stores audit records, pseudonymous rate-limit counters, and health state. Browser clients cannot read the private database; server routes use Firebase Admin credentials stored only in the deployment environment. The primary live call in `lib/gemini.ts` submits collected evidence to Gemini, requests the explicit audit schema, falls back only on model availability errors, and rejects malformed output. The secondary call in `lib/gemma.ts` gives Gemma 4 only the validated risks and action list, forces the `select_next_action` function, rejects an invented index, and falls back deterministically without invalidating the audit.
+Cloud Firestore in the Google/Firebase project `proofflow-agent` stores audit records, pseudonymous rate-limit counters, and health state. Browser clients cannot read the private database; server routes use Firebase Admin credentials stored only in the deployment environment. The primary live call in `lib/gemini.ts` submits collected evidence to Gemini, requests the explicit audit schema, falls back only on model availability errors, and rejects malformed output. The secondary call in `lib/gemma.ts` gives Gemma 4 only the validated risks and action list, forces the `select_next_action` function, rejects an invented index, and falls back deterministically. The optional `lib/embedding.ts` stage uses `gemini-embedding-2` to compare only that action with at most five validated risks; failure never invalidates or rewrites the audit.
 
 ## Pre-existing resources
 

@@ -1,6 +1,6 @@
 # ProofFlow Agent
 
-ProofFlow turns binding hackathon rules and live project artifacts into a strict, judge-ready evidence ledger. It autonomously ingests an official Devpost rules page, scans a public GitHub repository, probes the deployment, asks Gemini 3.6 Flash for schema-constrained requirement reasoning, uses Gemma 4 to select one validated operational priority through a forced function call, persists the result in Firestore, and exports a portable Markdown evidence pack.
+ProofFlow turns binding hackathon rules and live project artifacts into a strict, judge-ready evidence ledger. It autonomously ingests an official Devpost rules page, scans a public GitHub repository, probes the deployment, asks Gemini 3.6 Flash for schema-constrained requirement reasoning, uses Gemma 4 to select one validated operational priority through a forced function call, measures that action's risk alignment with Gemini Embedding 2, persists the result in Firestore, and exports a portable Markdown evidence pack.
 
 Built from scratch for the **All Things Agentic Hackathon** in the **Taskmaster** category.
 
@@ -29,8 +29,9 @@ ProofFlow performs the workflow:
 3. probes the supplied deployment;
 4. uses Gemini structured output to map requirements to concrete evidence;
 5. asks Gemma 4 to select one existing next action without inventing or rewriting it;
-6. records the immutable run in a private-by-default Firestore database; and
-7. exposes a downloadable evidence pack with precise next actions.
+6. uses Gemini Embedding 2 to measure the selected action against the validated risk list;
+7. records the immutable run in a private-by-default Firestore database; and
+8. exposes a downloadable evidence pack with precise next actions.
 
 Missing evidence stays missing. The model never receives credentials and the browser never receives the Gemini or Firebase keys.
 
@@ -44,6 +45,7 @@ The Next.js server runs the bounded orchestration layer. Firebase Admin access i
 
 - **Gemini 3.6 Flash** through the official **Google GenAI SDK** (`@google/genai`), with Gemini 3.5 Flash Lite as a standards-compliant availability fallback
 - **Gemma 4 26B** through the same SDK for function-bound operational prioritization; failure preserves the validated first action deterministically
+- **Gemini Embedding 2** through the same SDK for a 128-dimensional semantic-grounding check; failure never changes the validated audit or priority
 - **Cloud Firestore** in the `proofflow-agent` Firebase project
 - Next.js 16 and React 19 on Vercel
 - Zod schema validation and Vitest
@@ -128,6 +130,7 @@ As of the XPRIZE submission package on August 5, 2026, ProofFlow has recorded no
 - strict request size and daily capacity limits;
 - primary model output constrained by JSON Schema and revalidated with Zod;
 - Gemma can select only an existing validated action index through a forced function call; and
+- the optional embedding stage compares only the selected action with at most five validated risks; and
 - no raw client IP storage.
 
 ## License
