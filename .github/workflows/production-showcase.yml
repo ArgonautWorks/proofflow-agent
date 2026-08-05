@@ -45,18 +45,18 @@ jobs:
             completeTrace: audit.actionsPerformed?.length === 6,
           };
 
-          if (Object.values(checks).some((value) => !value)) {
-            throw new Error(`Production provenance checks failed: ${JSON.stringify(checks)}`);
-          }
-
           console.log(`SHOWCASE_AUDIT_ID=${audit.id}`);
           console.log(JSON.stringify({
             score: audit.score,
             evidenceModel: audit.model,
-            operationalModel: audit.operationalPriority.model,
-            semanticModel: audit.semanticAlignment.model,
-            semanticScore: audit.semanticAlignment.score,
-            matchedRisk: audit.semanticAlignment.matchedRisk,
-            actionsPerformed: audit.actionsPerformed.length,
+            operationalModel: audit.operationalPriority?.model ?? null,
+            semanticModel: audit.semanticAlignment?.model ?? null,
+            semanticScore: audit.semanticAlignment?.score ?? null,
+            matchedRisk: audit.semanticAlignment?.matchedRisk ?? null,
+            actionsPerformed: audit.actionsPerformed?.length ?? 0,
           }, null, 2));
+
+          if (Object.values(checks).some((value) => !value)) {
+            throw new Error(`Production provenance checks failed: ${JSON.stringify(checks)}`);
+          }
           NODE
