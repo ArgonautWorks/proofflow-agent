@@ -17,10 +17,6 @@ function isRetryable(error: unknown): boolean {
   return /(?:429|500|502|503|504|UNAVAILABLE|RESOURCE_EXHAUSTED|high demand|timed? out)/i.test(upstreamMessage(error));
 }
 
-async function wait(milliseconds: number) {
-  await new Promise((resolve) => setTimeout(resolve, milliseconds));
-}
-
 function buildPrompt(snapshot: SourceSnapshot): string {
   const deployment = snapshot.deployment
     ? JSON.stringify(snapshot.deployment)
@@ -54,30 +50,36 @@ ${deployment}
 export async function reasonAboutEvidence(snapshot: SourceSnapshot) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) throw new Error("Gemini is not configured");
-  const client = new GoogleGenAI({ apiKey });
+  // Keep the whole agent run inside the platform's 60-second request budget.
+  // The SDK defaults to five attempts, so retries must be bounded explicitly
+  // before applying our single model fallback below.
+  const client = new GoogleGenAI({
+    apiKey,
+    httpOptions: {
+      timeout: 18_000,
+      retryOptions: { attempts: 1 },
+    },
+  });
   const prompt = buildPrompt(snapshot);
   let lastError: unknown;
   for (const model of [GEMINI_MODEL, GEMINI_FALLBACK_MODEL]) {
-    for (const delay of [0, 800, 2_000]) {
-      if (delay) await wait(delay);
-      try {
-        const response = await client.models.generateContent({
-          model,
-          contents: prompt,
-          config: {
-            responseMimeType: "application/json",
-            responseJsonSchema: auditJsonSchema,
-            temperature: 0.1,
-            maxOutputTokens: 10_000,
-          },
-        });
-        if (!response.text) throw new Error("Gemini returned an empty audit");
-        return { audit: modelAuditSchema.parse(JSON.parse(response.text)), model };
-      } catch (error) {
-        lastError = error;
-        if (!isRetryable(error)) throw error;
-      }
+    try {
+      const response = await client.models.generateContent({
+        model,
+        contents: prompt,
+        config: {
+          responseMimeType: "application/json",
+          responseJsonSchema: auditJsonSchema,
+          temperature: 0.1,
+          maxOutputTokens: 10_000,
+        },
+      });
+      if (!response.text) throw new Error("Gemini returned an empty audit");
+      return { audit: modelAuditSchema.parse(JSON.parse(response.text)), model };
+    } catch (error) {
+      lastError = error;
+      if (!isRetryable(error)) throw error;
     }
   }
-  throw new Error(`Gemini was temporarily unavailable after retries: ${upstreamMessage(lastError)}`);
+  throw new Error(`Gemini is temporarily unavailable; retry later. Upstream: ${upstreamMessage(lastError)}`);
 }
