@@ -7,10 +7,13 @@ Built from scratch for the **All Things Agentic Hackathon** in the **Taskmaster*
 ## Live proof
 
 - Product: [proofflow-agent.vercel.app](https://proofflow-agent.vercel.app)
+- Public demo video (1:48): [youtu.be/kqhoyUaeGdI](https://youtu.be/kqhoyUaeGdI)
 - Firestore-backed health: [proofflow-agent.vercel.app/api/health](https://proofflow-agent.vercel.app/api/health)
 - Latest live audit: [JSON](https://proofflow-agent.vercel.app/api/runs/wiifW2b4AAj8hsTVVDad) · [Markdown evidence pack](https://proofflow-agent.vercel.app/api/runs/wiifW2b4AAj8hsTVVDad/report)
 - Cloud deployment evidence: [docs/CLOUD_PROOF.md](docs/CLOUD_PROOF.md)
 - Build-window provenance: [docs/BUILD_PROVENANCE.md](docs/BUILD_PROVENANCE.md)
+
+The public demo was created for the purposes of entering the All Things Agentic Hackathon and includes on-screen narration, a production audit, the evidence ledger, system architecture, and live Google Cloud/Firestore proof.
 
 ## Why it exists
 

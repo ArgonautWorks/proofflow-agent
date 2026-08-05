@@ -8,3 +8,5 @@ coverage/
 npm-debug.log*
 *.pem
 *service-account*.json
+artifacts/video/
+.vercel
