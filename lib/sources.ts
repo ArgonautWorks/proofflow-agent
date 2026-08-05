@@ -114,5 +114,7 @@ export async function collectSources(input: AuditInput): Promise<SourceSnapshot>
     collectRepository(input.repoUrl),
     input.projectUrl ? probeDeployment(input.projectUrl) : Promise.resolve(undefined),
   ]);
-  return { checkedAt: new Date().toISOString(), rules, repository, deployment };
+  return deployment
+    ? { checkedAt: new Date().toISOString(), rules, repository, deployment }
+    : { checkedAt: new Date().toISOString(), rules, repository };
 }
