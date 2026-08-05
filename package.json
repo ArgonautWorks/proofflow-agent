@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "demo:record": "node scripts/record-demo.mjs",
+    "register:payanagent": "node scripts/register-payanagent.mjs",
+    "monitor:revenue": "node scripts/monitor-revenue.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },

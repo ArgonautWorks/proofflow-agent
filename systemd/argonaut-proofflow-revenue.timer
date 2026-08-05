@@ -1,0 +1,10 @@
+[Unit]
+Description=Run ArgonautWorks ProofFlow revenue monitor every 15 minutes
+
+[Timer]
+OnCalendar=*:0/15
+Persistent=true
+RandomizedDelaySec=45
+
+[Install]
+WantedBy=timers.target

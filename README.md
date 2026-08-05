@@ -101,6 +101,11 @@ The free UI remains available for evaluation. Autonomous buyers can request high
 
 Discovery is available at `/openapi.json`, `/.well-known/x402`, and `/llms.txt`. Payments settle directly to the ArgonautWorks receiving wallet without an account, subscription, or API key.
 
+- [x402scan service page](https://www.x402scan.com/server/0cd77797-74c0-4dfa-a7f4-047ce5c35afb)
+- [PayanAgent relay offer](https://payanagent.com/x402/kh78bdhmjvfteqqpfq06e5g3g98bw5ks)
+
+Directory records and unpaid challenge probes are distribution evidence, not revenue.
+
 ## Guardrails
 
 - official Devpost rules pages and public GitHub repository roots only;

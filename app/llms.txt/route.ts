@@ -15,6 +15,7 @@ export function GET() {
     "Free trial UI: /",
     "OpenAPI: /openapi.json",
     "x402 manifest: /.well-known/x402",
+    "PayanAgent relay: https://payanagent.com/x402/kh78bdhmjvfteqqpfq06e5g3g98bw5ks",
     "Source: https://github.com/ArgonautWorks/proofflow-agent",
     "",
   ].join("\n"), { headers: { "content-type": "text/plain; charset=utf-8" } });
