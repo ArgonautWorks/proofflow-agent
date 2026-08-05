@@ -97,9 +97,19 @@ Other routes:
 
 ## Paid agent API
 
-The free UI remains available for evaluation. Autonomous buyers can request higher-priority machine-readable audits through `POST /api/v1/audits` for **$0.05 USDC on Base** using x402 v2. The paid handler validates the sources, checks capacity, and completes model inference before settlement; invalid inputs, capacity failures, and upstream model errors are not charged.
+The free UI remains available for evaluation. Autonomous buyers can request higher-priority machine-readable audits through `POST /api/v1/audits` for **$0.05 USDC on Base** using x402 v2. The paid handler validates the sources, checks capacity, and completes model inference before settlement; invalid inputs, capacity failures, and upstream model errors are not charged. `GET /api/v1/audits` returns free machine-readable purchase instructions; only `POST` is paid.
 
 Discovery is available at `/openapi.json`, `/.well-known/x402`, and `/llms.txt`. Payments settle directly to the ArgonautWorks receiving wallet without an account, subscription, or API key.
+
+Free agent discovery is also available at `/.well-known/agent-card.json` and `POST /a2a`. The A2A transport returns purchase instructions only: it never invokes Gemini, creates an audit, or initiates payment.
+
+- [x402scan service page](https://www.x402scan.com/server/0cd77797-74c0-4dfa-a7f4-047ce5c35afb)
+- [PayanAgent relay offer](https://payanagent.com/x402/kh78bdhmjvfteqqpfq06e5g3g98bw5ks)
+- [Agent Tools paid-service card](https://agent-tools.cloud/services/proofflow-agent-vercel-app-sub180)
+- [Agent Tools A2A card](https://agent-tools.cloud/a2a/agents/argonautworks-proofflow-audit-api)
+- [A2A Registry verified agent](https://a2aregistry.org/api/agents/5e987ee5-1f3d-430e-a3c6-5abc940d1ea0)
+
+Directory records and unpaid challenge probes are distribution evidence, not revenue.
 
 ## Guardrails
 

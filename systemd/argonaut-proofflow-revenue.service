@@ -1,0 +1,14 @@
+[Unit]
+Description=ArgonautWorks ProofFlow Audit API revenue monitor
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/oak/argonaut-ventures/proofflow-agent
+ExecStart=/home/oak/.local/share/fnm/aliases/default/bin/node scripts/monitor-revenue.mjs
+Environment=PROOFFLOW_REVENUE_STATE=/home/oak/.local/state/venture-lab/proofflow-revenue.json
+Environment=PROOFFLOW_LEDGER=/home/oak/argonaut-ventures/venture-lab-frantic-monitor/ledger.csv
+Environment=PROOFFLOW_SERVICE_ORIGIN=https://proofflow-agent.vercel.app
+Environment=PROOFFLOW_MARKET_TEST_STARTED_AT=2026-08-05T06:41:43.450Z
+Nice=10

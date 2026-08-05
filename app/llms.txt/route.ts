@@ -15,6 +15,10 @@ export function GET() {
     "Free trial UI: /",
     "OpenAPI: /openapi.json",
     "x402 manifest: /.well-known/x402",
+    "A2A discovery: /.well-known/agent-card.json and POST /a2a.",
+    "PayanAgent relay: https://payanagent.com/x402/kh78bdhmjvfteqqpfq06e5g3g98bw5ks",
+    "Agent Tools: https://agent-tools.cloud/services/proofflow-agent-vercel-app-sub180",
+    "A2A Registry: https://a2aregistry.org/api/agents/5e987ee5-1f3d-430e-a3c6-5abc940d1ea0",
     "Source: https://github.com/ArgonautWorks/proofflow-agent",
     "",
   ].join("\n"), { headers: { "content-type": "text/plain; charset=utf-8" } });
