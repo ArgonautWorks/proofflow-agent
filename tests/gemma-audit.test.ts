@@ -77,7 +77,10 @@ describe("Gemma-first evidence audit", () => {
         files: Array.from({ length: 2_000 }, (_, index) => `deep/path/to/evidence-file-${index}.tsx`),
       },
     };
-    expect(buildGemmaPrompt(largeSnapshot).length).toBeLessThan(40_000);
+    const prompt = buildGemmaPrompt(largeSnapshot);
+    expect(prompt.length).toBeLessThan(27_000);
+    expect(prompt).toContain("deep/path/to/evidence-file-79.tsx");
+    expect(prompt).not.toContain("deep/path/to/evidence-file-80.tsx");
   });
 
   it("parses exactly one forced function call and binds an existing next action", () => {

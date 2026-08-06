@@ -85,11 +85,11 @@ export function auditFromFunctionCalls(
   };
 }
 
-const GEMMA_RULES_CHARS = 20_000;
-const GEMMA_README_CHARS = 8_000;
-const GEMMA_FILE_LIMIT = 160;
+const GEMMA_RULES_CHARS = 16_000;
+const GEMMA_README_CHARS = 4_000;
+const GEMMA_FILE_LIMIT = 80;
 
-/** Keep one Gemma request below the free-tier per-minute input-token ceiling. */
+/** Reserve input headroom for the forced-call schema and shared free-tier TPM. */
 export function buildGemmaPrompt(snapshot: SourceSnapshot): string {
   const deployment = snapshot.deployment ? JSON.stringify(snapshot.deployment) : "No deployment URL was supplied.";
   const evidenceAllowlist = [
