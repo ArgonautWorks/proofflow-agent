@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { auditFromFunctionCalls } from "../lib/gemma-audit";
+import { auditFromFunctionCalls, buildGemmaPrompt } from "../lib/gemma-audit";
 import { runGemmaProofFlow } from "../lib/gemma-agent";
 import type { AuditResult, SourceSnapshot } from "../lib/types";
 
@@ -67,6 +67,19 @@ function functionCall(audit = validAudit(), priorityIndex = 0) {
 }
 
 describe("Gemma-first evidence audit", () => {
+  it("keeps the source prompt bounded below the free-tier input ceiling", () => {
+    const largeSnapshot: SourceSnapshot = {
+      ...snapshot,
+      rules: { ...snapshot.rules, text: "binding rule ".repeat(10_000) },
+      repository: {
+        ...snapshot.repository,
+        readme: "repository evidence ".repeat(10_000),
+        files: Array.from({ length: 2_000 }, (_, index) => `deep/path/to/evidence-file-${index}.tsx`),
+      },
+    };
+    expect(buildGemmaPrompt(largeSnapshot).length).toBeLessThan(40_000);
+  });
+
   it("parses exactly one forced function call and binds an existing next action", () => {
     const decision = auditFromFunctionCalls(functionCall(), snapshot);
     expect(decision.audit).toEqual(validAudit());
