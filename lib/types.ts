@@ -81,6 +81,8 @@ export interface AuditResult {
   actionsPerformed: AgentAction[];
   sourceSnapshot: SourceSnapshot;
   model: string;
+  /** Present only for the isolated Gemma-first competition workflow. */
+  auditMode?: "gemma-core";
   completedAt: string;
 }
 

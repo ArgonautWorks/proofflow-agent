@@ -36,6 +36,12 @@ ProofFlow performs the workflow:
 
 Missing evidence stays missing. The model never receives credentials and the browser never receives the Gemini or Firebase keys.
 
+## Gemma Core (isolated competition mode)
+
+`/gemma-core` is a separate, free rate-limited public-source workflow for the autonomous-agent competition track. It collects the same bounded Devpost, public GitHub, and optional deployment sources, but uses **only `gemma-4-26b-a4b-it`** for semantic reasoning. Gemma is forced to return one bounded function call containing an audit parsed again with the existing Zod audit schema and one index into its own existing next-action list.
+
+The mode fails closed when a rules excerpt is absent from the collected rules, when a missing requirement claims evidence, or when verified/partial evidence is not an observed repository file/README/repository URL or observed deployment URL. Rules text can establish an obligation but cannot by itself verify implementation. Its Firestore records are labeled `auditMode: "gemma-core"` with the exact model identifier. The existing homepage, `POST /api/analyze`, and paid `POST /api/v1/audits` remain the Gemini-first workflow described above; Gemma is core only on `/gemma-core`.
+
 ## Architecture
 
 ![ProofFlow architecture](docs/architecture.svg)
@@ -99,6 +105,7 @@ Never commit the service-account JSON or expose it through a `NEXT_PUBLIC_` vari
 
 Other routes:
 
+- `POST /api/gemma-core` — isolated Gemma Core audit; same bounded input shape, free daily rate limit, and 10KB body cap;
 - `GET /api/runs/{id}` — retrieve a persisted audit;
 - `GET /api/runs/{id}/report` — download its Markdown evidence pack; and
 - `GET /api/health` — verify the server and Firestore path.
@@ -131,6 +138,7 @@ As of the XPRIZE submission package on August 5, 2026, ProofFlow has recorded no
 - strict request size and daily capacity limits;
 - primary model output constrained by JSON Schema and revalidated with Zod;
 - Gemma can select only an existing validated action index through a forced function call; and
+- Gemma Core additionally rejects unobserved excerpts, file paths, and rule-only implementation claims; and
 - the optional embedding stage compares only the selected action with at most five validated risks; and
 - no raw client IP storage.
 

@@ -18,6 +18,7 @@ describe("search discovery", () => {
     expect(sitemap()).toEqual([
       { url: SITE_ORIGIN },
       { url: `${SITE_ORIGIN}/building-proofflow` },
+      { url: `${SITE_ORIGIN}/gemma-core` },
     ]);
   });
 
